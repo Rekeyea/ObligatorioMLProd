@@ -11,15 +11,8 @@ from authentication import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM, SECRET_KEY, T
 app = FastAPI()
 
 @app.get("/")
-async def read_root():
+async def test():
     return {"Hello": "World"}
-
-async def get_current_active_user(
-    current_user: Annotated[User, Depends(get_current_user)]
-):
-    if current_user.disabled:
-        raise HTTPException(status_code=400, detail="Inactive user")
-    return current_user
 
 @app.post("/token", response_model=Token)
 async def login_for_access_token(
