@@ -7,7 +7,7 @@ from passlib.context import CryptContext
 from datetime import datetime, timedelta
 
 from authentication import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM, SECRET_KEY, Token, TokenData, User, authenticate_user, create_access_token, get_current_user, get_user, oauth2_scheme
-from inference import ImageRequest, TextRequest, online_inference_img, online_inference_text
+from inference import ImageRequest, TextRequest, online_inference_img, online_inference_text, text_embedding
 
 app = FastAPI()
 
@@ -31,6 +31,11 @@ async def test():
 #         data={"sub": user.username}, expires_delta=access_token_expires
 #     )
 #     return {"access_token": access_token, "token_type": "bearer"}
+
+@app.post("/embeddings/text")
+async def embeddings_text_api(request: TextRequest):
+    return text_embedding(request)
+
 
 @app.post("/inference/text")
 async def inference_text_api(request: TextRequest):
