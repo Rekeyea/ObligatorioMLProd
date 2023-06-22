@@ -1,25 +1,20 @@
-from typing import List
-from pydantic import BaseModel
+from typing import List, Tuple
+from PIL import Image
 from embeddings import generate_embedding
+from logger_decorator import log_decorator, log_decorator_batch
 
-class TextRequest(BaseModel):
-    text: str
-
-class ImageRequest(BaseModel):
-    url: str
-
-def text_embedding(request: TextRequest):
-    embeddings = generate_embedding(request.text)
+def text_embedding(text: str):
+    embeddings = generate_embedding(text)
     return {"embeddings": embeddings}
 
-def online_inference_text(request: TextRequest):
-    print(request)
+@log_decorator
+def online_inference(request: Tuple[str, Image.Image]):
+    print(f"ONLINE {request}")
+    (text, image) = request
     return {"category": 1}
 
-def online_inference_img(request: ImageRequest):
-    print(request)
-    return {"category": 1}
-
-def batch_inference(request: List[TextRequest | ImageRequest]):
-    print(request)
-    return [{"category": 1}]
+@log_decorator_batch
+def batch_inference(request: List[Tuple[str, Image.Image]]):
+    print(f"BATCH {request}")
+    print(len(request))
+    return [{"category": 1} for r in request]

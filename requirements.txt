@@ -7,3 +7,7 @@ passlib[bcrypt]
 tensorflow 
 tensorflow-text 
 tensorflow-hub
+gradio_client
+jinja2
+gradio
+Pillow

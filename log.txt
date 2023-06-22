@@ -1,0 +1,4 @@
+{"parameter": "('string', None)", "value": "{'category': 1}"}
+{"parameter": "('string', None)", "value": "{'category': 1}"}
+{"parameter": "('string', None)", "value": "{'category': 1}"}
+{"parameter": "('string', None)", "value": "{'category': 1}"}
