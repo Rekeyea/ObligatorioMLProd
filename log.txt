@@ -2,3 +2,5 @@
 {"parameter": "('string', None)", "value": "{'category': 1}"}
 {"parameter": "('string', None)", "value": "{'category': 1}"}
 {"parameter": "('string', None)", "value": "{'category': 1}"}
+{"parameter": "(('', 'http://localhost:8000/336f9e75-4775-4028-ab23-a5055303759b.jpg'),)", "value": "{'category': 1}"}
+{"parameter": "(('', 'http://localhost:8000/be0a7b55-b2bf-4640-aa6b-a86c05f43e2f.jpg'),)", "value": "{'category': 1}"}

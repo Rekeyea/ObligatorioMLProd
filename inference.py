@@ -8,13 +8,13 @@ def text_embedding(text: str):
     return {"embeddings": embeddings}
 
 @log_decorator
-def online_inference(request: Tuple[str, Image.Image]):
+def online_inference(request: Tuple[str, str]):
     print(f"ONLINE {request}")
     (text, image) = request
     return {"category": 1}
 
 @log_decorator_batch
-def batch_inference(request: List[Tuple[str, Image.Image]]):
+def batch_inference(request: List[Tuple[str, str]]):
     print(f"BATCH {request}")
     print(len(request))
     return [{"category": 1} for r in request]

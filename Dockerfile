@@ -16,5 +16,7 @@ COPY . .
 # Expose the port that the API will listen on
 EXPOSE 8000
 
+ENV ENVIRONMENT=production
+
 # Specify the command to run your API using uvicorn (adjust the module and port as needed)
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

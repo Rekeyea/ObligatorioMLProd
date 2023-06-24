@@ -13,6 +13,7 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import os
+import uuid
 
 import time
 from fastapi.routing import APIRoute
@@ -22,9 +23,26 @@ from pydantic import BaseModel
 
 from inference import batch_inference, online_inference, text_embedding
 
+from fastapi.staticfiles import StaticFiles
+
 import json
 
+from PIL import Image
+
+environment = os.environ.get('ENVIRONMENT', 'development')
+print(environment)
+if environment == 'production':
+    # Load production configuration
+    from config.production import HOST
+else:
+    # Load development configuration (default)
+    from config.development import HOST
+
+print(f"************* {HOST} ***************")
+
+
 app = FastAPI()
+app.mount("/public", StaticFiles(directory="public"), name="public")
 
 class TextImageRequest(BaseModel):
     text: str
@@ -34,17 +52,13 @@ class TextImageRequest(BaseModel):
 async def test():
     return {"Hello": "World"}
 
-@app.post("/embeddings/text")
-async def embeddings_text_api(request: TextImageRequest):
-    return text_embedding(request.text)
-
 @app.post("/inference/online")
 def inference_text_api(request: TextImageRequest):
-    return online_inference((request.text, None))
+    return online_inference((request.text, request.url))
 
 @app.post("/inference/batch")
 def inference_text_api(request: List[TextImageRequest]):
-    res = batch_inference([(r.text, None) for r in request])
+    res = batch_inference([(r.text, r.url) for r in request])
     return res
 
 @app.get("/logs/classifications")
@@ -61,7 +75,15 @@ def get_classifications():
 
 
 def process_data(text, image):
-    return online_inference((text, image))
+    image_url = None
+    if image is not None:
+        pil_image = Image.fromarray(image)
+        random_filename = str(uuid.uuid4()) + '.jpg'
+        save_directory = './public'
+        save_path = os.path.join(save_directory, random_filename)
+        pil_image.save(save_path)
+        image_url = f"{HOST}/public/{random_filename}"
+    return online_inference((text, image_url))
 
 demo = gr.Interface(fn=process_data, inputs=["text", "image"], outputs="text")
 
