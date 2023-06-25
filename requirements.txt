@@ -5,3 +5,16 @@ pandas==2.0.2
 passlib==1.7.4
 pydantic==1.10.7
 Requests==2.31.0
+fastapi
+uvicorn[standard]
+python-dotenv
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+tensorflow 
+tensorflow-text 
+tensorflow-hub
+gradio_client
+jinja2
+gradio
+Pillow
