@@ -1,5 +1,5 @@
 from http.client import HTTPResponse
-from typing import Callable, List, Union, Annotated
+from typing import Callable, List, Optional, Union, Annotated
 from fastapi import FastAPI, Request
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
@@ -45,8 +45,8 @@ app = FastAPI()
 app.mount("/public", StaticFiles(directory="public"), name="public")
 
 class TextImageRequest(BaseModel):
-    text: str
-    url: str
+    text: Optional[str] = None
+    url: Optional[str] = None
 
 @app.get("/")
 async def test():

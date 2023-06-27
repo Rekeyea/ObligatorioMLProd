@@ -11,3 +11,4 @@ gradio_client
 jinja2
 gradio
 Pillow
+requests
