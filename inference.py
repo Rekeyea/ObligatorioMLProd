@@ -4,10 +4,12 @@ from embeddings import generate_embedding
 from logger_decorator import log_decorator, log_decorator_batch
 import requests
 from io import BytesIO
+from keras.models import load_model
+import numpy as np
 
-def text_embedding(text: str):
-    embeddings = generate_embedding(text)
-    return {"embeddings": embeddings}
+from processing import preProcessTextAndImage
+
+model = load_model('./model/model.h5')
 
 def get_image(url):
     if url is None:
@@ -20,9 +22,11 @@ def get_image(url):
 def online_inference(request: Tuple[str, str]):
     print(f"ONLINE {request}")
     (text, image_url) = request
-    response = requests.get(image_url)
-    image = Image.open(BytesIO(response.content))
-    return {"category": 1}
+    image = get_image(image_url)
+    tensor = preProcessTextAndImage(text, image)
+    predictions = model.predict(tensor)
+    print(predictions[0])
+    return {"prediction": np.argmax(predictions[0]).item()}
 
 @log_decorator_batch
 def batch_inference(request: List[Tuple[str | None, str | None]]):

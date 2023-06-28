@@ -21,7 +21,7 @@ from fastapi.routing import APIRoute
 import gradio as gr
 from pydantic import BaseModel
 
-from inference import batch_inference, online_inference, text_embedding
+from inference import batch_inference, online_inference
 
 from fastapi.staticfiles import StaticFiles
 

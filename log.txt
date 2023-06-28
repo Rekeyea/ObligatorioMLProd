@@ -4,3 +4,15 @@
 {"parameter": "('string', None)", "value": "{'category': 1}"}
 {"parameter": "(('', 'http://localhost:8000/336f9e75-4775-4028-ab23-a5055303759b.jpg'),)", "value": "{'category': 1}"}
 {"parameter": "(('', 'http://localhost:8000/be0a7b55-b2bf-4640-aa6b-a86c05f43e2f.jpg'),)", "value": "{'category': 1}"}
+{"parameter": "(('ray ban', None),)", "value": "[[1.0000000e+00 8.1266059e-13 4.6498963e-10]]"}
+{"parameter": "(('ray ban', None),)", "value": "{'prediction': array([[1.0000000e+00, 8.1266059e-13, 4.6498963e-10]], dtype=float32)}"}
+{"parameter": "(('ray ban', None),)", "value": "{'prediction': array([[1.0000000e+00, 8.1266059e-13, 4.6498963e-10]], dtype=float32)}"}
+{"parameter": "(('ray ban', None),)", "value": "{'prediction': array([1.0000000e+00, 8.1266059e-13, 4.6498963e-10], dtype=float32)}"}
+{"parameter": "(('ray ban', None),)", "value": "{'prediction': array([1.0000000e+00, 8.1266059e-13, 4.6498963e-10], dtype=float32)}"}
+{"parameter": "(('ray ban', None),)", "value": "{'prediction': 1.0}"}
+{"parameter": "(('ray ban', None),)", "value": "{'prediction': [1.0, 8.126605942002096e-13, 4.6498963013341665e-10]}"}
+{"parameter": "(('ray ban', None),)", "value": "{'prediction': 0}"}
+{"parameter": "(('ray ban', None),)", "value": "{'prediction': 0}"}
+{"parameter": "(('book', None),)", "value": "{'prediction': 0}"}
+{"parameter": "(('something else', None),)", "value": "{'prediction': 0}"}
+{"parameter": "(('something else', 'https://cdn.shopify.com/s/files/1/0015/7610/8121/products/805289602057_1050x700.png?v=1664469337'),)", "value": "{'prediction': 2}"}
