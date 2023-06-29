@@ -11,7 +11,12 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code to the working directory
-COPY . .
+COPY ./inference.py .
+COPY ./logger_decorator.py .
+COPY ./processing.py .
+COPY ./main.py .
+COPY ./model .
+COPY ./templates .
 
 # Expose the port that the API will listen on
 EXPOSE 8000
