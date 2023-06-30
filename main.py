@@ -1,30 +1,12 @@
-from http.client import HTTPResponse
-from typing import Callable, List, Optional, Union, Annotated
-from fastapi import FastAPI, Request
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from jose import JWTError, jwt
-from passlib.context import CryptContext
-from datetime import datetime, timedelta
-
-from authentication import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM, SECRET_KEY, Token, TokenData, User, authenticate_user, create_access_token, get_current_user, get_user, oauth2_scheme
-
-from fastapi import FastAPI, File, UploadFile, Request
-from fastapi.responses import HTMLResponse, RedirectResponse
+from typing import List, Optional
+from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 import os
 import uuid
-
-import time
-from fastapi.routing import APIRoute
-
 import gradio as gr
 from pydantic import BaseModel
-
 from inference import batch_inference, online_inference
-
 from fastapi.staticfiles import StaticFiles
-
 import json
 
 from PIL import Image

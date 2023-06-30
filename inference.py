@@ -1,6 +1,5 @@
 from typing import List, Tuple
 from PIL import Image
-from embeddings import generate_embedding
 from logger_decorator import log_decorator, log_decorator_batch
 import requests
 from io import BytesIO

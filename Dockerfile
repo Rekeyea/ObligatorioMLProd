@@ -15,8 +15,10 @@ COPY ./inference.py .
 COPY ./logger_decorator.py .
 COPY ./processing.py .
 COPY ./main.py .
-COPY ./model .
-COPY ./templates .
+COPY model model
+COPY templates templates
+COPY config config
+COPY public public
 
 # Expose the port that the API will listen on
 EXPOSE 8000
