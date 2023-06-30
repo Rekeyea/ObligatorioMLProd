@@ -16,3 +16,9 @@
 {"parameter": "(('book', None),)", "value": "{'prediction': 0}"}
 {"parameter": "(('something else', None),)", "value": "{'prediction': 0}"}
 {"parameter": "(('something else', 'https://cdn.shopify.com/s/files/1/0015/7610/8121/products/805289602057_1050x700.png?v=1664469337'),)", "value": "{'prediction': 2}"}
+{"parameter": "('ray ban', None)", "value": "{'prediction': 0}"}
+{"parameter": "('ray ban', None)", "value": "{'prediction': 0}"}
+{"parameter": "(('Ray Ban', None),)", "value": "{'prediction': 'Store 1'}"}
+{"parameter": "(('ray ban', None),)", "value": "{'prediction': 'Store 1'}"}
+{"parameter": "(('ray ban', 'http://localhost:8000/public/2176f68c-de3c-4921-bf4c-76c33bac97f3.jpg'),)", "value": "{'prediction': 'Store 3'}"}
+{"parameter": "(('rayban', 'http://localhost:8000/public/ad8058d1-6085-4b6c-bdb6-d14316ba4c8e.jpg'),)", "value": "{'prediction': 'Store 3'}"}

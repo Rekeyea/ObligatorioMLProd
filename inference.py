@@ -19,16 +19,16 @@ def get_image(url):
 
 @log_decorator
 def online_inference(request: Tuple[str, str]):
-    print(f"ONLINE {request}")
     (text, image_url) = request
     image = get_image(image_url)
     tensor = preProcessTextAndImage(text, image)
     predictions = model.predict(tensor)
-    print(predictions[0])
-    return {"prediction": np.argmax(predictions[0]).item()}
+    return {"prediction": f"Store {np.argmax(predictions[0]).item() + 1}"}
 
 @log_decorator_batch
 def batch_inference(request: List[Tuple[str | None, str | None]]):
-    print(f"BATCH {request}")
     actual_inputs = [(text, get_image(url)) for (text, url) in request]
-    return [{"category": 1} for r in actual_inputs]
+    tensors = [preProcessTextAndImage(text, image) for (text, image) in actual_inputs]
+    predictions = [model.predict(tensor) for tensor in tensors]
+    print(predictions)
+    return [{"prediction": f"Store {np.argmax(prediction[0]).item() + 1}"} for prediction in predictions]
