@@ -32,3 +32,4 @@ def batch_inference(request: List[Tuple[str | None, str | None]]):
     predictions = [model.predict(tensor) for tensor in tensors]
     print(predictions)
     return [{"prediction": f"Store {np.argmax(prediction[0]).item() + 1}"} for prediction in predictions]
+
