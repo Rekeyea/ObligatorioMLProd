@@ -18,7 +18,7 @@ COPY ./main.py .
 COPY model model
 COPY templates templates
 COPY config config
-COPY public public
+RUN mkdir public
 
 # Expose the port that the API will listen on
 EXPOSE 8000
