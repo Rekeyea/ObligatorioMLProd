@@ -22,3 +22,8 @@
 {"parameter": "(('ray ban', None),)", "value": "{'prediction': 'Store 1'}"}
 {"parameter": "(('ray ban', 'http://localhost:8000/public/2176f68c-de3c-4921-bf4c-76c33bac97f3.jpg'),)", "value": "{'prediction': 'Store 3'}"}
 {"parameter": "(('rayban', 'http://localhost:8000/public/ad8058d1-6085-4b6c-bdb6-d14316ba4c8e.jpg'),)", "value": "{'prediction': 'Store 3'}"}
+{"parameter": "(('ray ban', 'https://assets.sunglasshut.com/is/image/LuxotticaRetail/805289439899__STD__shad__qt.png?impolicy=SGH_bgtransparent'),)", "value": "{'prediction': 'Store 3'}"}
+{"parameter": "('ray ban', 'https://images.ray-ban.com/is/image/RayBan/805289602057__STD__shad__qt.png?impolicy=RB_Product&width=800&bgc=%23f2f2f2')", "value": "{'prediction': 'Store 3'}"}
+{"parameter": "('ray ban', 'https://images.ray-ban.com/is/image/RayBan/805289602057__STD__shad__qt.png?impolicy=RB_Product&width=800&bgc=%23f2f2f2')", "value": "{'prediction': 'Store 3'}"}
+{"parameter": "('ray ban', 'https://images.ray-ban.com/is/image/RayBan/805289602057__STD__shad__qt.png?impolicy=RB_Product&width=800&bgc=%23f2f2f2')", "value": "{'prediction': 'Grandivision'}"}
+{"parameter": "('ray ban', 'https://images.ray-ban.com/is/image/RayBan/805289602057__STD__shad__qt.png?impolicy=RB_Product&width=800&bgc=%23f2f2f2')", "value": "{'prediction': 'Grandivision'}"}

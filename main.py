@@ -8,6 +8,8 @@ from pydantic import BaseModel
 from inference import batch_inference, online_inference
 from fastapi.staticfiles import StaticFiles
 import json
+import pandas as pd
+import io
 
 from PIL import Image
 
@@ -67,6 +69,33 @@ def process_data(text, image):
         image_url = f"{HOST}/public/{random_filename}"
     return online_inference((text, image_url))
 
+def process_data_batch(csv_file):
+    # Read the CSV file into a Pandas DataFrame
+    results = []
+    with open(csv_file.name) as fo:
+        content = fo.read()
+        df = pd.read_csv(io.StringIO(content))
+
+        # Process each line in the DataFrame
+        requests = [(row['text'], row['url']) for _,row in df.iterrows()]
+        results = batch_inference(requests)
+        
+        # for _, row in df.iterrows():
+        #     text = row['text']
+        #     url = row['url']
+        #     # Perform your desired processing on each line
+        #     # You can modify this code block to perform specific actions on text and URL
+
+        #     # Append the processed result to the list
+        #     data = online_inference((text, url))
+        #     print(data)
+        #     results.append(data)
+
+    return results
+
+
 demo = gr.Interface(fn=process_data, inputs=["text", "image"], outputs="text")
+demo_batch = gr.Interface(fn=process_data_batch, inputs="file", outputs="text", title="CSV Processing Interface")
 
 app = gr.mount_gradio_app(app, demo, path="/dashboard")
+app = gr.mount_gradio_app(app, demo_batch, path="/batch")

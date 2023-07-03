@@ -10,6 +10,8 @@ from processing import preProcessTextAndImage
 
 model = load_model('./model/model.h5')
 
+STORES = ["Allnutrition", "Chemist", "Grandivision"]
+
 def get_image(url):
     if url is None:
         return None
@@ -23,13 +25,13 @@ def online_inference(request: Tuple[str, str]):
     image = get_image(image_url)
     tensor = preProcessTextAndImage(text, image)
     predictions = model.predict(tensor)
-    return {"prediction": f"Store {np.argmax(predictions[0]).item() + 1}"}
+    index = np.argmax(predictions[0]).item()
+    return {"prediction": STORES[index]}
 
 @log_decorator_batch
 def batch_inference(request: List[Tuple[str | None, str | None]]):
     actual_inputs = [(text, get_image(url)) for (text, url) in request]
     tensors = [preProcessTextAndImage(text, image) for (text, image) in actual_inputs]
     predictions = [model.predict(tensor) for tensor in tensors]
-    print(predictions)
-    return [{"prediction": f"Store {np.argmax(prediction[0]).item() + 1}"} for prediction in predictions]
+    return [{"prediction": STORES[np.argmax(prediction[0]).item()]} for prediction in predictions]
 
